@@ -1,0 +1,44 @@
+
+class Funcionario {
+    private String nome;
+    private double salario;
+
+    public Funcionario(String nome, double salario) {
+        this.nome = nome;
+        this.salario = salario;
+    }
+
+    public void calcularBonus() {
+        System.out.println(nome + " recebeu um bônus de R$" + salario * 0.1);
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+}
+
+class Gerente extends Funcionario {
+    public Gerente(String nome, double salario) {
+        super(nome, salario);
+    }
+    @Override
+    public void calcularBonus() {
+        System.out.println(getNome() + " (Gerente) recebeu um bônus de R$" + getSalario() * 0.2);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Criando objetos
+        Funcionario funcionarioComum = new Funcionario("João", 3000);
+        Funcionario gerente = new Gerente("Maria", 5000);
+
+
+        funcionarioComum.calcularBonus(); // João recebeu um bônus de R$300.0
+        gerente.calcularBonus();          // Maria (Gerente) recebeu um bônus de R$1000.0
+    }
+}
